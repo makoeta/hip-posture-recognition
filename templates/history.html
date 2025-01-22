@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="history-data" data-history='{{ history_json|safe }}'></div>
+<div class="ant-layout">
+    <header class="ant-layout-header">
+        <h1 class="logo">Posture Analytics</h1>
+        <div class="header-actions">
+            <a href="/" class="floating-button primary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Live Feed
+            </a>
+            <button id="export-data" class="floating-button">
+                <i class="fas fa-file-export"></i>
+                Export Data
+            </button>
+            <button id="clear-history" class="floating-button danger">
+                <i class="fas fa-trash"></i>
+                Clear History
+            </button>
+        </div>
+    </header>
+    <main class="ant-layout-content">
+        <div class="analytics-dashboard">
+            <!-- Summary Cards -->
+            <div class="ant-row stats-overview">
+                <div class="ant-col ant-col-8">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-arrows-up-down"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-title">Average Shoulder Angle</div>
+                            <div class="stat-value" id="avg-shoulder">--°</div>
+                            <div class="stat-trend" id="shoulder-trend">
+                                <span class="trend-icon"></span>
+                                <span class="trend-text">vs last period</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-title">Average Hip Angle</div>
+                            <div class="stat-value" id="avg-hip">--°</div>
+                            <div class="stat-trend" id="hip-trend">
+                                <span class="trend-icon"></span>
+                                <span class="trend-text">vs last period</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-title">Posture Score</div>
+                            <div class="stat-value" id="posture-score">--%</div>
+                            <div class="stat-trend" id="score-trend">
+                                <span class="trend-icon"></span>
+                                <span class="trend-text">vs last period</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="ant-row chart-section">
+                <div class="ant-col ant-col-16">
+                    <div class="ant-card">
+                        <div class="ant-card-head">
+                            <div class="ant-card-head-wrapper">
+                                <div class="ant-card-head-title">
+                                    <i class="fas fa-chart-area"></i>
+                                    Angle Trends
+                                </div>
+                                <div class="chart-controls">
+                                    <div class="time-filter">
+                                        <select id="time-range" class="ant-select">
+                                            <option value="1h">Last Hour</option>
+                                            <option value="6h">Last 6 Hours</option>
+                                            <option value="24h">Last 24 Hours</option>
+                                            <option value="7d">Last 7 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ant-card-body">
+                            <div id="trend-chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ant-col ant-col-8">
+                    <div class="ant-card">
+                        <div class="ant-card-head">
+                            <div class="ant-card-head-title">
+                                <i class="fas fa-chart-pie"></i>
+                                Posture Distribution
+                            </div>
+                        </div>
+                        <div class="ant-card-body">
+                            <div id="distribution-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Table -->
+            <div class="ant-row">
+                <div class="ant-col ant-col-24">
+                    <div class="ant-card">
+                        <div class="ant-card-head">
+                            <div class="ant-card-head-wrapper">
+                                <div class="ant-card-head-title">
+                                    <i class="fas fa-history"></i>
+                                    Measurement History
+                                </div>
+                                <div class="table-controls">
+                                    <div class="search-box">
+                                        <input type="text" id="search-input" placeholder="Search records...">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ant-card-body">
+                            <div class="history-table-container">
+                                <table class="ant-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Shoulder Angle</th>
+                                            <th>Hip Angle</th>
+                                            <th>Frame Tilt</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="history-table-body">
+                                        {% for record in history %}
+                                        <tr>
+                                            <!-- We now display the separate date_str and time_str -->
+                                            <td>{{ record.date_str }}</td>
+                                            <td>{{ record.time_str }}</td>
+                                            
+                                            <td class="{% if record.measurements.shoulder_angle|abs > 5 %}warning{% endif %}">
+                                                {{ "%.1f"|format(record.measurements.shoulder_angle) }}°
+                                            </td>
+                                            <td class="{% if record.measurements.hip_angle|abs > 5 %}warning{% endif %}">
+                                                {{ "%.1f"|format(record.measurements.hip_angle) }}°
+                                            </td>
+                                            <td class="{% if record.measurements.tilt_angle|abs > 2 %}warning{% endif %}">
+                                                {{ "%.1f"|format(record.measurements.tilt_angle) }}°
+                                            </td>
+                                            <td>
+                                                {% if record.measurements.shoulder_angle|abs <= 5 and
+                                                      record.measurements.hip_angle|abs <= 5 and
+                                                      record.measurements.tilt_angle|abs <= 2 %}
+                                                    <span class="status-tag good">Good</span>
+                                                {% else %}
+                                                    <span class="status-tag warning">Needs Attention</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Clear History Modal -->
+<div id="clear-history-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Clear History</h2>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="warning-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Are you sure you want to clear all measurement history? This action cannot be undone.</p>
+            </div>
+            <div class="modal-actions">
+                <button id="cancel-clear" class="floating-button">Cancel</button>
+                <button id="confirm-clear" class="floating-button danger">Clear History</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+<script src="https://kit.fontawesome.com/3b0b144efc.js" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}

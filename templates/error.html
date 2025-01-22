@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="ant-layout">
+    <header class="ant-layout-header">
+        <h1 class="logo">Error</h1>
+        <a href="/" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            Back to Dashboard
+        </a>
+    </header>
+    <main class="ant-layout-content">
+        <div class="ant-row">
+            <div class="ant-col ant-col-24">
+                <div class="ant-card error-card">
+                    <div class="ant-card-head">
+                        <div class="ant-card-head-title">Oops! Something went wrong</div>
+                    </div>
+                    <div class="ant-card-body">
+                        <p class="error-message">{{ error }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
