@@ -10,6 +10,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.utils import ImageReader
 from datetime import datetime
 import time
+import math
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -63,14 +64,20 @@ def parse_timestamp(ts):
     raise ValueError(f"Unsupported timestamp type: {type(ts)} ({ts})")
 
 def get_camera():
+    """
+    Returns the global camera instance. If it's not initialized,
+    create it (pc_camera by default), or if something fails, create a test_mode camera.
+    """
     global camera
     if camera is None:
         try:
-            camera = Camera()
+            camera = Camera(camera_type='pc_camera', test_mode=False)
+            # Example: you could set a frame_buffer_size property if you like
+            # camera.frame_buffer_size = 10
             logger.info("Camera initialized successfully")
         except Exception as e:
             logger.error(f"Failed to initialize camera: {e}")
-            camera = Camera(test_mode=True)  # Explicitly set test mode
+            camera = Camera(test_mode=True)
     return camera
 
 @app.route('/')
@@ -140,11 +147,17 @@ def clear_history():
 
 def generate_frames():
     cam = get_camera()
+    last_emit_time = 0
+    emit_interval = 1/30  # Limit to ~30 FPS for socket emissions
+    
     while True:
         try:
             frame, measurements = cam.get_frame()
             if frame is not None:
-                if measurements:
+                current_time = time.time()
+                
+                # Throttle measurement emissions
+                if measurements and (current_time - last_emit_time) >= emit_interval:
                     try:
                         data = {
                             'shoulder_angle': round(float(measurements.shoulder_angle), 2),
@@ -152,15 +165,20 @@ def generate_frames():
                             'tilt_angle': round(float(measurements.tilt_angle), 2)
                         }
                         socketio.emit('measurements', data)
+                        last_emit_time = current_time
                     except Exception as e:
                         logger.error(f"Error emitting measurements: {e}")
                         continue
 
                 yield (b'--frame\r\n'
                        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+                
+                # Add small sleep to prevent CPU overload
+                time.sleep(0.01)
+                
         except Exception as e:
             logger.error(f"Error generating frames: {e}")
-            time.sleep(0.1)  # Small delay on error
+            time.sleep(0.1)
             continue
 
 @app.route('/video_feed')
@@ -203,6 +221,10 @@ def update_thresholds():
 @app.route('/generate_report')
 def generate_report():
     try:
+        from reportlab.pdfgen import canvas
+        from reportlab.lib.pagesizes import letter
+        from reportlab.lib.utils import ImageReader
+
         cam = get_camera()
         captured_measurements = cam.get_measurements_history()
         
@@ -228,7 +250,7 @@ def generate_report():
 
         if captured_measurements:
             # Most recent measurement
-            last_measurement = captured_measurements[0]  # Assuming it's sorted by time (latest first)
+            last_measurement = captured_measurements[0]
             p.setFont("Helvetica-Bold", 16)
             p.drawString(50, height - 220, "Latest Captured Measurement")
             p.setFont("Helvetica", 12)
@@ -249,7 +271,12 @@ def generate_report():
                 else:
                     color = '#f5222d'  # red
 
-                p.setFillColorRGB(*(int(color[i:i + 2], 16) / 255 for i in (1, 3, 5)))
+                # Convert hex color -> RGB
+                r = int(color[1:3], 16) / 255.0
+                g = int(color[3:5], 16) / 255.0
+                b = int(color[5:7], 16) / 255.0
+                p.setFillColorRGB(r, g, b)
+
                 p.drawString(70, y, f"{label}: {value:.1f}°")
                 y -= 20
 
@@ -314,6 +341,55 @@ def generate_report():
         logger.error(f"Error generating report: {e}")
         return jsonify({'error': str(e)}), 500
 
+# ------------------------------------------------------------------
+# NEW: Route to list camera indices for the user
+# ------------------------------------------------------------------
+@app.route('/camera_list')
+def camera_list():
+    """
+    List available camera indices on this machine.
+    """
+    cam = get_camera()
+    indices = cam.list_camera_indices(max_test=5)
+    return jsonify({"available_indices": indices})
+
+# ------------------------------------------------------------------
+# NEW: Route to select a camera type/index
+# ------------------------------------------------------------------
+@app.route('/select_camera', methods=['POST'])
+def select_camera():
+    """
+    Switch camera type or index based on user input.
+    Example JSON payload:
+      { "camera_type": "usb_camera", "camera_index": 1 }
+    """
+    data = request.json
+    if not data:
+        return jsonify({"error": "No JSON body provided"}), 400
+    
+    new_type = data.get("camera_type", "pc_camera")
+    new_index = data.get("camera_index", None)
+
+    global camera
+    try:
+        # If an existing camera instance exists, delete it so we can recreate
+        if camera is not None:
+            del camera
+            camera = None
+
+        # Create a fresh camera with the new settings
+        camera = Camera(camera_type=new_type, camera_index=new_index, test_mode=False)
+        logger.info(f"Switched to {new_type} at index {new_index} successfully.")
+        
+        return jsonify({
+            "camera_type": new_type,
+            "camera_index": new_index,
+            "message": "Camera selection updated. Check /video_feed"
+        })
+    except Exception as e:
+        logger.error(f"Error selecting camera: {e}")
+        return jsonify({"error": str(e)}), 500
+
 @socketio.on('connect')
 def handle_connect():
     try:
@@ -323,7 +399,6 @@ def handle_connect():
         logger.error(f"Error in handle_connect: {e}")
         return False
 
-# NOTE: We now accept at least one argument (sid) to avoid the mismatch error.
 @socketio.on('disconnect')
 def handle_disconnect(sid):
     try:
@@ -347,3 +422,4 @@ if __name__ == '__main__':
         )
     except Exception as e:
         logger.error(f"Failed to start server: {e}")
+
