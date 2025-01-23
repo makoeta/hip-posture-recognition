@@ -231,6 +231,6 @@ The Scoliosis Analysis System is a sophisticated tool designed for real-time pos
 ## Support
 
 For  upport or questions:
-- Email: support@example.com
+- Please Make PR 
 - Documentation: /docs
 - GitHub/gitlab Issues: 
