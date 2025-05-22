@@ -1,0 +1,74 @@
+[
+  {
+    "shoulder_angle": 2.16,
+    "hip_angle": 1.08,
+    "tilt_angle": 0.54,
+    "timestamp": 1737575446.7793236
+  },
+  {
+    "shoulder_angle": 5.99,
+    "hip_angle": 0.53,
+    "tilt_angle": 3.26,
+    "timestamp": 1737565184.8661227
+  },
+  {
+    "shoulder_angle": 10.22,
+    "hip_angle": 27.14,
+    "tilt_angle": 18.68,
+    "timestamp": 1737556843.442201
+  },
+  {
+    "shoulder_angle": 21.14,
+    "hip_angle": 62.48,
+    "tilt_angle": -38.0,
+    "timestamp": 1737556865.6655183
+  },
+  {
+    "shoulder_angle": 16.62,
+    "hip_angle": 62.57,
+    "tilt_angle": 39.59,
+    "timestamp": 1737556901.8167138
+  },
+  {
+    "shoulder_angle": 3.05,
+    "hip_angle": 0.88,
+    "tilt_angle": 1.97,
+    "timestamp": 1737557649.191378
+  },
+  {
+    "shoulder_angle": 89.51,
+    "hip_angle": 77.01,
+    "tilt_angle": 87.0,
+    "timestamp": 1737563165.5924122
+  },
+  {
+    "shoulder_angle": 2.77,
+    "hip_angle": 5.81,
+    "tilt_angle": 4.29,
+    "timestamp": 1737563550.1353207
+  },
+  {
+    "shoulder_angle": 12.39,
+    "hip_angle": 9.15,
+    "tilt_angle": 4.0,
+    "timestamp": 1737563818.0963478
+  },
+  {
+    "shoulder_angle": 16.33,
+    "hip_angle": 11.91,
+    "tilt_angle": 4.0,
+    "timestamp": 1737563849.0915606
+  },
+  {
+    "shoulder_angle": 10.31,
+    "hip_angle": 13.05,
+    "tilt_angle": 4.0,
+    "timestamp": 1737563874.3355107
+  },
+  {
+    "shoulder_angle": 86.9,
+    "hip_angle": 87.98,
+    "tilt_angle": 89.0,
+    "timestamp": 1737564745.8942957
+  }
+]
