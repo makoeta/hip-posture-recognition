@@ -1,0 +1,7 @@
+
+services:
+  client:
+    build:
+      context: instruction_site
+    ports:
+      - "80:80"

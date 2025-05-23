@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     socket.on('connect', () => {
-        console.log('Connected to server');
+        console.log('Connected to hip_posture_recognition');
         reconnectAttempts = 0;
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     socket.on('disconnect', (reason) => {
-        console.log('Disconnected from server:', reason);
+        console.log('Disconnected from hip_posture_recognition:', reason);
         if (loadingOverlay) {
             loadingOverlay.style.display = 'flex';
             updateLoadingStatus('<i class="fas fa-spinner fa-spin"></i> Connection lost. Reconnecting...', false);
