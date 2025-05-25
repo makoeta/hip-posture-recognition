@@ -6,19 +6,13 @@ pages:
    script:
       # Specify the steps involved to build your app here
       - npm run generate
-   cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
-      key:
-         files:
-         - package-lock.json
-      paths:
-         - .npm/
+   cache:
+    key:
+      files:
+        - instruction_site/package-lock.json
+    paths:
+      - instruction_site/.npm/
    artifacts:
-      paths:
-         # The directory that contains the built files to be published
-         - .output/public
-   # The directory that contains the built files to be published
-   publish: .output/public
-   rules:
-      # This ensures that only pushes to the default branch 
-      # will trigger a pages deploy
-      - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    paths:
+      - instruction_site/.output/public
+   publish: instruction_site/.output/public
