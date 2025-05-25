@@ -3,11 +3,12 @@
 <template>
   <UApp>
     <div class="flex h-screen w-screen flex-col">
-      <div class="mt-10 ml-5 text-5xl font-bold lg:text-7xl">
+      <div class="mt-10 ml-5 text-6xl font-bold lg:text-8xl">
         Hip Posture Recognition
       </div>
       <div class="flex grow items-center justify-center">
-        <div
+        <NuxtLink
+          to="/guide/toc"
           class="btn btn-xl btn-outline h-[8rem] w-[20rem] text-3xl lg:h-[15rem] lg:w-[35rem] lg:text-6xl"
         >
           <div class="flex flex-col items-center">
@@ -32,7 +33,7 @@
 
             Anleitung
           </div>
-        </div>
+        </NuxtLink>
       </div>
       <div class="mr-5 mb-5 self-end">by UniTyLab & HHN</div>
     </div>
