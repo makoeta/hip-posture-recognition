@@ -1,9 +1,27 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup>
+const theme = useTheme();
+
+function toggleTheme(): void {
+  if (theme.value === "dark") {
+    theme.value = "light";
+    console.log("light");
+    return;
+  } else {
+    theme.value = "dark";
+    console.log("dark");
+  }
+  useHead({
+    htmlAttrs: {
+      "data-theme": theme,
+    },
+  });
+}
+</script>
 
 <template>
   <label class="swap swap-rotate">
     <!-- this hidden checkbox controls the state -->
-    <input type="checkbox" class="theme-controller" value="dark" />
+    <input type="checkbox" class="theme-controller" :onclick="toggleTheme" />
 
     <!-- sun icon -->
     <svg

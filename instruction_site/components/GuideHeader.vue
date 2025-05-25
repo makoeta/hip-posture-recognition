@@ -3,7 +3,7 @@
 <template>
   <div class="mb-4 w-full">
     <div>
-      <div class="bg-gray-950 p-4 text-6xl text-white">
+      <div class="bg-gray-950 p-4 text-7xl text-white">
         Hip Posture Recognition
       </div>
       <div class="ml-4 flex items-center text-4xl">
