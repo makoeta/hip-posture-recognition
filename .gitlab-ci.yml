@@ -1,0 +1,18 @@
+pages:
+   image: node
+   before_script:
+      - cd instruction_site
+      - npm ci --cache .npm --prefer-offline
+   script:
+      # Specify the steps involved to build your app here
+      - npm run generate
+   cache:
+    key:
+      files:
+        - instruction_site/package-lock.json
+    paths:
+      - instruction_site/.npm/
+   artifacts:
+    paths:
+      - instruction_site/.output/public
+   publish: instruction_site/.output/public
