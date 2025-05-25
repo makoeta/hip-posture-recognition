@@ -1,12 +1,12 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="mb-4 flex h-screen flex-col items-center">
+  <div class="mb-4 w-full">
     <div>
-      <div class="w-fit bg-gray-950 p-4 text-6xl text-white">
+      <div class="bg-gray-950 p-4 text-6xl text-white">
         Hip Posture Recognition
       </div>
-      <div class="flex items-center text-4xl">
+      <div class="ml-4 flex items-center text-4xl">
         <svg
           height="1em"
           viewBox="0 0 24 24"
@@ -23,7 +23,7 @@
             fill="currentColor"
           />
         </svg>
-        Anleitung
+        &nbsp;Anleitung
       </div>
     </div>
   </div>
