@@ -1,4 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const route = useRoute();
+
+const subLabel = computed(() => {
+  const segments = route.fullPath.split("/").filter(Boolean);
+  if (segments[0] !== "guide" || segments.length < 2) {
+    return "Anleitung";
+  }
+  return (
+    "Anleitung " +
+      String(segments[1]).charAt(0).toUpperCase() +
+      String(segments[1]).slice(1) || ""
+  );
+});
+</script>
 
 <template>
   <div class="mb-4 w-full">
@@ -23,7 +37,7 @@
             fill="currentColor"
           />
         </svg>
-        &nbsp;Anleitung
+        &nbsp;{{ subLabel }}
       </div>
     </div>
   </div>

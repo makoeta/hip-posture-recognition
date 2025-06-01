@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import GuideHeader from "~/components/GuideHeader.vue";
 
-const page = ref(1);
-
 const backToOverview = () => {
   navigateTo("/guide");
 };

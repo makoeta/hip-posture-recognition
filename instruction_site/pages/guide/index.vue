@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "guide",
+  layout: "guide-overview",
 });
 
 interface MenuItem {
@@ -56,16 +56,23 @@ const topics = ref<MenuItem[]>([
       >
         <div class="bg-base-100 border-base-300 collapse">
           <input type="radio" name="my-accordion-1" />
-          <div class="collapse-title font-semibold">
+          <div class="collapse-title flex font-semibold hover:underline">
             {{ index + 1 }}.&nbsp;
-            <NuxtLink class="hover:underline" :to="topic.url">
+            <div class="hover:underline">
               {{ topic.label }}
-            </NuxtLink>
+            </div>
           </div>
-          <div class="collapse-content text-xl">
-            <div v-for="(subItem, subIndex) in topic.subItems">
+          <div class="collapse-content text-3xl">
+            <div
+              class="mb-3 flex"
+              v-for="(subItem, subIndex) in topic.subItems"
+              :key="subItem.label"
+            >
+              {{ index + 1 }}.{{ subIndex + 1 }}.&nbsp;
               <NuxtLink :to="subItem.url">
-                {{ index + 1 }}.{{ subIndex + 1 }}.&nbsp;{{ subItem.label }}
+                <div class="hover:underline">
+                  {{ subItem.label }}
+                </div>
               </NuxtLink>
             </div>
           </div>
