@@ -4,6 +4,7 @@ interface GuideSequence {
 
 export const guideSequence: GuideSequence = {
   urls: [
+    "/guide/",
     "/guide/intro",
     "/guide/hardware/materials",
     "/guide/hardware/fan",
