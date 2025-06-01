@@ -7,7 +7,7 @@
     </div>
     <div class="flex grow items-center justify-center">
       <NuxtLink
-        to="/guide/toc"
+        to="/guide"
         class="btn btn-xl btn-outline h-[8rem] w-[20rem] text-3xl lg:h-[15rem] lg:w-[35rem] lg:text-6xl"
       >
         <div class="flex flex-col items-center">

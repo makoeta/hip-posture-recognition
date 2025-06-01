@@ -2,6 +2,10 @@
 import GuideHeader from "~/components/GuideHeader.vue";
 
 const page = ref(1);
+
+const backToOverview = () => {
+  navigateTo("/guide");
+};
 </script>
 
 <template>
@@ -19,10 +23,28 @@ const page = ref(1);
         <div />
         <div class="join h-fit">
           <button class="join-item btn btn-outline">Zurück</button>
-          <button class="join-item btn btn-ghost">{{ page }}</button>
+          <div class="tooltip" data-tip="Inhaltsverzeichnis">
+            <button
+              class="join-item btn btn-outline btn-ghost text-2xl"
+              @click="backToOverview()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <!-- Icon from Google Material Icons by Material Design Authors - https://github.com/material-icons/material-icons/blob/master/LICENSE -->
+                <path
+                  fill="currentColor"
+                  d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+                />
+              </svg>
+            </button>
+          </div>
           <button class="join-item btn btn-outline">Weiter</button>
         </div>
-        <theme-controller />
+        <div />
       </div>
     </div>
   </div>

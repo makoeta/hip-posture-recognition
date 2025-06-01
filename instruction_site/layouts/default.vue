@@ -2,9 +2,6 @@
 
 <template>
   <div class="h-screen w-screen font-mono">
-    <div class="absolute top-3 right-3">
-      <theme-controller />
-    </div>
     <slot />
   </div>
 </template>
