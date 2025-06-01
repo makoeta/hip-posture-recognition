@@ -1,3 +1,4 @@
+# Job name has to be `pages`. See https://docs.gitlab.com/ee/user/project/pages/#how-it-works
 pages:
    image: node
    before_script:
@@ -6,13 +7,19 @@ pages:
    script:
       # Specify the steps involved to build your app here
       - npm run generate
-   cache:
-    key:
-      files:
-        - instruction_site/package-lock.json
-    paths:
-      - instruction_site/.npm/
+   cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
+      key:
+         files:
+         - instruction_site/package-lock.json
+      paths:
+         - instruction_site/.npm/
    artifacts:
-    paths:
-      - instruction_site/.output/public
+      paths:
+         # The directory that contains the built files to be published
+         - instruction_site/.output/public
+   # The directory that contains the built files to be published
    publish: instruction_site/.output/public
+   rules:
+      # This ensures that only pushes to the default branch 
+      # will trigger a pages deploy
+      - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
