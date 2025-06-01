@@ -55,7 +55,7 @@ const topics = ref<MenuItem[]>([
         :key="topic.label"
       >
         <div class="bg-base-100 border-base-300 collapse">
-          <input type="radio" name="my-accordion-1" />
+          <input type="radio" name="my-accordion-1" :checked="index == 0" />
           <div class="collapse-title flex font-semibold hover:underline">
             {{ index + 1 }}.&nbsp;
             <div class="hover:underline">
