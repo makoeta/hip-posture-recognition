@@ -18,7 +18,7 @@ const startGuide = () => {
       </div>
     </div>
   </div>
-  <div class="absolute bottom-4 flex w-full justify-between font-mono">
+  <div class="absolute bottom-8 flex w-full justify-between font-mono">
     <div />
     <div class="join h-fit">
       <div class="tooltip" data-tip="Anfangen">

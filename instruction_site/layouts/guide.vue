@@ -40,7 +40,7 @@ const urls = computed<string[]>(() => {
         <div class="join h-fit">
           <NuxtLink :to="urls[0]">
             <button
-              class="join-item btn btn-outline"
+              class="join-item btn btn-outline border-r-neutral-content text-xl"
               :class="{ 'btn-disabled': urls[0] == '' }"
             >
               Zurück
@@ -48,7 +48,7 @@ const urls = computed<string[]>(() => {
           </NuxtLink>
           <div class="tooltip" data-tip="Inhaltsverzeichnis">
             <button
-              class="join-item btn btn-outline btn-ghost text-2xl"
+              class="join-item btn btn-outline btn-ghost text-xl"
               @click="backToOverview()"
             >
               <svg
@@ -67,7 +67,7 @@ const urls = computed<string[]>(() => {
           </div>
           <NuxtLink :to="urls[1]">
             <button
-              class="join-item btn btn-outline"
+              class="join-item btn btn-outline border-l-neutral-content text-xl"
               :class="{ 'btn-disabled': urls[1] == '' }"
             >
               Weiter
