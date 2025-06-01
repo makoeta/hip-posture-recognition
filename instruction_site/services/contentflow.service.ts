@@ -1,38 +1,18 @@
-interface ContentFlow {
-  segments: ContentFlowSegment[];
+interface GuideSequence {
+  urls: string[];
 }
 
-interface ContentFlowSegment {
-  pages: number;
-  title: string;
-  baseUrl: string;
-}
-
-export class ContentFlowService {
-  getGuideFlow(): ContentFlow {
-    return {
-      segments: [
-        {
-          title: "toc",
-          pages: 1,
-          baseUrl: "/guide/toc",
-        },
-        {
-          title: "hardware",
-          pages: 4,
-          baseUrl: "/guide/hardware",
-        },
-        {
-          title: "software",
-          pages: 4,
-          baseUrl: "/guide/software",
-        },
-        {
-          title: "installation",
-          pages: 3,
-          baseUrl: "/guide/installation",
-        },
-      ],
-    };
-  }
-}
+export const guideSequence: GuideSequence = {
+  urls: [
+    "/guide/intro",
+    "/guide/hardware/materials",
+    "/guide/hardware/fan",
+    "/guide/hardware/case",
+    "/guide/software/imager",
+    "/guide/software/sdcard",
+    "/guide/software/image",
+    "/guide/software/install",
+    "/guide/install/setup",
+    "/guide/install/use",
+  ],
+};

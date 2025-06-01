@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: "guide",
+});
+</script>
 
-<template>
-  <NuxtLayout name="guide"> </NuxtLayout>
-</template>
+<template></template>
 
 <style scoped></style>

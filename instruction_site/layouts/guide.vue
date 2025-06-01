@@ -1,9 +1,27 @@
 <script setup lang="ts">
 import GuideHeader from "~/components/GuideHeader.vue";
+import { guideSequence } from "~/services/contentflow.service";
 
 const backToOverview = () => {
   navigateTo("/guide");
 };
+const sequence = guideSequence;
+const route = useRoute();
+
+const urls = computed<string[]>(() => {
+  const currentIndex = sequence.urls.indexOf(route.fullPath);
+
+  if (currentIndex === -1) {
+    return ["", ""];
+  }
+
+  return [
+    currentIndex > 0 ? sequence.urls[currentIndex - 1] : "",
+    currentIndex < sequence.urls.length - 1
+      ? sequence.urls[currentIndex + 1]
+      : "",
+  ];
+});
 </script>
 
 <template>
@@ -20,7 +38,14 @@ const backToOverview = () => {
       <div class="mb-5 flex w-full justify-between">
         <div />
         <div class="join h-fit">
-          <button class="join-item btn btn-outline">Zurück</button>
+          <NuxtLink :to="urls[0]">
+            <button
+              class="join-item btn btn-outline"
+              :class="{ 'btn-disabled': urls[0] == '' }"
+            >
+              Zurück
+            </button>
+          </NuxtLink>
           <div class="tooltip" data-tip="Inhaltsverzeichnis">
             <button
               class="join-item btn btn-outline btn-ghost text-2xl"
@@ -40,7 +65,14 @@ const backToOverview = () => {
               </svg>
             </button>
           </div>
-          <button class="join-item btn btn-outline">Weiter</button>
+          <NuxtLink :to="urls[1]">
+            <button
+              class="join-item btn btn-outline"
+              :class="{ 'btn-disabled': urls[1] == '' }"
+            >
+              Weiter
+            </button>
+          </NuxtLink>
         </div>
         <div />
       </div>
