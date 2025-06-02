@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Guide from "~/layouts/guide.vue";
-
 definePageMeta({
   layout: "guide",
 });

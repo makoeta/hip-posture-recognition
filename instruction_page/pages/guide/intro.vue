@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: "guide",
 });
@@ -6,8 +6,8 @@ definePageMeta({
 
 <template>
   <div class="px-8 text-2xl">
-    <div class="text-4xl">Hallo!</div>
-    <br />
+    <div class="cursor typewriter-animation text-4xl">Hallo!</div>
+    <br>
     <div>
       Dieses Open-Source-Projekt hilft dabei, die Körperhaltung von Patientinnen
       und Patienten automatisch zu erkennen. Ziel ist es, Pflegekräfte oder
@@ -16,7 +16,7 @@ definePageMeta({
       Diese Anleitung zeigt Schritt für Schritt, wie das geht – ganz ohne
       spezielles Vorwissen.
     </div>
-    <br />
+    <br>
     <div>
       In dieser Anleitung sind weiterführende Informationen oder benötigte
       Dateien als Links hinterlegt. Solche Links erkennen Sie daran, dass der
@@ -29,10 +29,44 @@ definePageMeta({
       <NuxtLink to="/guide/intro">
         <div class="tooltip" data-tip="Klickbarer Link">
           <span class="font-bold hover:underline">hier</span>
-        </div> </NuxtLink
-      >.
+        </div>
+      </NuxtLink>
+      .
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Cursor */
+.cursor {
+  width: 24em;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Animation */
+.typewriter-animation {
+  animation: typewriter 2s steps(50) 1s 1 normal both,
+  blinkingCursor 500ms steps(50) infinite normal;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkingCursor {
+  from {
+    border-right-color: rgba(255, 255, 255, 0.75);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+</style>

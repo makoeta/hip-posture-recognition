@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: "guide",
 });
@@ -22,16 +22,16 @@ function handleFanMountedCheck(val: boolean): void {
       @box-check="handleUnpackCheck"
     >
       <div class="text-xl">Laden Sie die offizielle Software herunter.</div>
-      <div class="text-xl">
+      <span class="text-xl">
         Der offizielle Download finden Sie
         <NuxtLink
-          to="https://www.raspberrypi.com/software/"
-          target="_blank"
           external
+          target="_blank"
+          to="https://www.raspberrypi.com/software/"
         >
-          <span class="font-bold hover:underline">hier</span> </NuxtLink
+          <span class="font-bold hover:underline">hier</span></NuxtLink
         >.
-      </div>
+      </span>
     </GuideChecklistItem>
 
     <GuideChecklistItem
@@ -46,9 +46,9 @@ function handleFanMountedCheck(val: boolean): void {
   </GuideChecklist>
 
   <div
-    class="mt-4 text-2xl"
     v-if="isInstallerDownloaded && isImagerInstalled"
     v-auto-animate
+    class="mt-4 text-2xl"
   >
     Sie können nun fortfahren.
     <span class="text-xl">(Klicken Sie auf weiter)</span>

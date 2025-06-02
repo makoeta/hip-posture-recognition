@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: "guide",
 });
@@ -32,20 +32,20 @@ function handleFanMountedCheck(val: boolean): void {
         @box-check="handleFanMountedCheck"
       >
         <div class="text-xl">Bauen Sie das Gehäuse um den RaspberryPi.</div>
-        <div class="text-xl">
+        <span class="text-xl">
           Die offizielle Anleitung dafür finden Sie
           <NuxtLink
-            to="https://datasheets.raspberrypi.com/case/case-for-raspberry-pi-5-product-brief.pdf"
-            target="_blank"
             external
+            target="_blank"
+            to="https://datasheets.raspberrypi.com/case/case-for-raspberry-pi-5-product-brief.pdf"
           >
-            <span class="font-bold hover:underline">hier</span> </NuxtLink
+            <span class="font-bold hover:underline">hier</span></NuxtLink
           >.
-        </div>
+        </span>
       </GuideChecklistItem>
     </GuideChecklist>
 
-    <div class="mt-4 text-2xl" v-if="isUnpacked && isCaseDone" v-auto-animate>
+    <div v-if="isUnpacked && isCaseDone" v-auto-animate class="mt-4 text-2xl">
       Sie haben das Gehäuse montiert und schließend hiermit den Hardwareteil der
       Anleitung ab. Sie können nun fortfahren.
       <span class="text-xl">(Klicken Sie auf weiter)</span>

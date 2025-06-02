@@ -1,10 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: "guide",
 });
 
 const isAdapterCheck = ref(false);
 const isInPcCheck = ref(false);
+
 
 function handleAdapterCheck(val: boolean): void {
   isAdapterCheck.value = val;
@@ -19,8 +20,8 @@ function handlePcCheck(val: boolean): void {
   <div>
     <GuideChecklist label="MicroSD Karte mit PC verbinden:">
       <GuideChecklistItem
-        title="microSD in Adapter"
-        @box-check="handleAdapterCheck"
+          title="microSD in Adapter"
+          @box-check="handleAdapterCheck"
       >
         <div class="text-xl">
           Stecken Sie die MicroSD-Karte in den Adapter. (Siehe Abb. 1)
@@ -35,9 +36,9 @@ function handlePcCheck(val: boolean): void {
     </GuideChecklist>
 
     <div
-      class="mt-4 text-2xl"
-      v-if="isAdapterCheck && isInPcCheck"
-      v-auto-animate
+        v-if="isAdapterCheck && isInPcCheck"
+        v-auto-animate
+        class="mt-4 text-2xl"
     >
       Sie können nun fortfahren.
       <span class="text-xl">(Klicken Sie auf weiter)</span>

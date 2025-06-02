@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps<{
   label: string;
 }>();
@@ -9,7 +9,6 @@ defineProps<{
     <li class="p-4 pb-2 text-3xl font-bold tracking-wide">
       {{ label }}
     </li>
-
     <slot />
   </ul>
 </template>

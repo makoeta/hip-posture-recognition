@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps<{
   title: string;
 }>();
@@ -17,7 +17,7 @@ watch(isChecked, (checked) => {
 <template>
   <li class="list-row">
     <div class="text-4xl font-thin tabular-nums">
-      <input type="checkbox" class="checkbox checkbox-lg" v-model="isChecked" />
+      <input v-model="isChecked" class="checkbox checkbox-lg" type="checkbox" />
     </div>
     <div class="list-col-grow">
       <div class="text-3xl">{{ title }}</div>

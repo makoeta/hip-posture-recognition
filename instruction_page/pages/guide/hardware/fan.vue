@@ -27,21 +27,22 @@ function handleFanMountedCheck(val: boolean): void {
       </GuideChecklistItem>
 
       <GuideChecklistItem
-        title="Lüfter anbringen"
-        @box-check="handleFanMountedCheck"
+          title="Lüfter anbringen"
+          @box-check="handleFanMountedCheck"
       >
         <div class="text-xl">Bringen Sie den Lüfter an den RaspberryPi an.</div>
-        <div class="text-xl">
+        <span class="text-xl">
           Die offizielle Anleitung dafür finden Sie
+
           <NuxtLink
-            external
-            target="_blank"
-            to="https://datasheets.raspberrypi.com/cooling/raspberry-pi-active-cooler-product-brief.pdf"
+              class="font-bold hover:underline"
+              external
+              target="_blank"
+              to="https://datasheets.raspberrypi.com/cooling/raspberry-pi-active-cooler-product-brief.pdf"
           >
-            <span class="font-bold hover:underline">hier</span></NuxtLink
-          >
-          .
-        </div>
+            hier</NuxtLink
+          >.
+        </span>
       </GuideChecklistItem>
     </GuideChecklist>
 

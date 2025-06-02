@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: "guide",
 });
@@ -18,7 +18,7 @@ definePageMeta({
     <div>Vielen Dank, dass Sie dieses Open-Source-Projekt verwenden!</div>
 
     <div class="mt-12">
-      <NuxtLink to="https://www.github.com" target="_blank" external>
+      <NuxtLink external target="_blank" to="https://www.github.com">
         <button class="btn btn-xl">Zur Projektseite</button>
       </NuxtLink>
     </div>
