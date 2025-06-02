@@ -1,7 +1,7 @@
 pages:
   image: node
   before_script:
-    - cd instruction_site
+    - cd instruction_page
     - npm ci --cache .npm --prefer-offline
   script:
     - npm run generate
@@ -9,12 +9,12 @@ pages:
     - ls -la .output/public
   artifacts:
     paths:
-      - instruction_site/.output/public
-  publish: instruction_site/.output/public
+      - instruction_page/.output/public
+  publish: instruction_page/.output/public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
   cache:
     key: "$CI_COMMIT_SHA"
     paths:
-      - instruction_site/.npm/
+      - instruction_page/.npm/
 
