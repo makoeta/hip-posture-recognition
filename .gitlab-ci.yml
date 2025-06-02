@@ -8,9 +8,7 @@ pages:
       # Specify the steps involved to build your app here
       - npm run generate
    cache: # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
-      key:
-         files:
-         - instruction_site/package-lock.json
+      key: "$CI_COMMIT_SHA"
       paths:
          - instruction_site/.npm/
    artifacts:
