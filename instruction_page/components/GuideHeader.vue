@@ -17,10 +17,10 @@ const subLabel = computed(() => {
 <template>
   <div class="mb-4 w-full">
     <div>
-      <div class="bg-gray-950 p-4 text-7xl text-white">
+      <div class="bg-gray-950 p-4 text-5xl 2xl:text-7xl text-white">
         Hip Posture Recognition
       </div>
-      <div class="ml-4 flex items-center text-4xl">
+      <div class="ml-4 flex items-center text-3xl 2xl:text-4xl">
         <svg
           height="1em"
           viewBox="0 0 24 24"

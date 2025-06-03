@@ -46,9 +46,9 @@ const topics = ref<MenuItem[]>([
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <div class="text-8xl font-bold">Inhalt</div>
-    <div class="flex flex-col text-5xl">
+  <div class="flex flex-col min-h-max">
+    <div class="text-5xl 2xl:text-8xl font-bold">Inhalt</div>
+    <div class="flex flex-col text-3xl 2xl:text-5xl">
       <div
           v-for="(topic, index) in topics"
           :key="topic.label"
@@ -62,7 +62,7 @@ const topics = ref<MenuItem[]>([
               {{ topic.label }}
             </div>
           </div>
-          <div class="collapse-content text-3xl">
+          <div class="collapse-content text-xl 2xl:text-3xl">
             <div
                 v-for="(subItem, subIndex) in topic.subItems"
                 :key="subItem.label"

@@ -25,13 +25,13 @@ const urls = computed<string[]>(() => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center font-mono">
+  <div class="flex flex-col items-center font-mono h-screen">
     <div class="flex h-screen w-[50%] flex-col">
       <div class="flex justify-center">
         <guide-header />
       </div>
 
-      <div class="mt-8 mb-4 grow px-4">
+      <div class="mt-8 mb-4 grow px-4 overflow-y-scroll">
         <slot />
       </div>
 
