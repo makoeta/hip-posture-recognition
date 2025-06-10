@@ -1,191 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="ant-layout">
-    <header class="ant-layout-header">
-        <div class="header-logos">
-            <img src="{{ url_for('static', filename='img/hhn_logo.png') }}" alt="HHN Logo" class="hhn-logo">
-            <h1 class="logo">Scoliosis Analysis</h1>
-            <img src="{{ url_for('static', filename='img/unityLab.jpg') }}" alt="UniTyLab Logo" class="unity-logo">
-        </div>
-        <div class="header-actions">
-            <div class="camera-select">
-                <select id="camera-select" defaultValue="pc_camera">
-                    <option value="pc_camera">💻 PC Camera</option>
-                    <option value="usb_camera">🔌 USB Camera</option>
-                    <option value="raspberry_pi">🍓 Raspberry Pi Camera</option>
-                </select>
-            </div>
-            <button id="capture-photo" class="floating-button primary">
-                <i class="fas fa-camera"></i>
-                Take Photo
-            </button>
-            <a href="/history" class="floating-button">
-                <i class="fas fa-history"></i>
-                View History
-            </a>
-            <button id="settings-button" class="floating-button">
-                <i class="fas fa-cog"></i>
-                Settings
-            </button>
-            <button id="download-report" class="floating-button">
-                <i class="fas fa-download"></i>
-                Download Report
-            </button>
-        </div>
-    </header>
+<div class="container">
 
-    <main class="ant-layout-content">
-        <div class="ant-row">
-            <div class="ant-col ant-col-16">
-                <div class="ant-card main-card">
-                    <div class="ant-card-head">
-                        <div class="ant-card-head-title">
-                            <i class="fas fa-camera"></i>
-                            Live Scoliosis Analysis Feed
-                        </div>
-                    </div>
-                    <div class="ant-card-body">
-                        <div class="video-container">
-                            <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Video feed">
-                            <div class="loading-overlay">
+    <div class="header-logos">
+        <img alt="HHN Logo" class="hhn-logo" src="{{ url_for('static', filename='img/hhn_logo.png') }}">
+        <h1 class="logo">Hip Posture Analyser</h1>
+        <img alt="UniTyLab Logo" class="unity-logo"
+             src="{{ url_for('static', filename='img/unityLab.jpg') }}">
+    </div>
+
+
+    <img alt="Video feed (no camera found)" class="" id="video-feed" src="{{ url_for('video_feed') }}">
+    <div class="loading-overlay">
                                 <span class="loading-text">
                                     <i class="fas fa-spinner fa-spin"></i>
                                     Initializing camera...
                                 </span>
-                            </div>
-                            <div class="countdown-overlay" style="display: none;">
-                                <span class="countdown-text">5</span>
-                            </div>
-                            <div class="captured-overlay" style="display: none;">
-                                <div class="captured-content">
-                                    <h2>Captured Measurements</h2>
-                                    <div class="captured-measurements">
-                                        <div class="measurement">
-                                            <span class="label">Shoulder Angle</span>
-                                            <span class="value" id="captured-shoulder">0°</span>
-                                        </div>
-                                        <div class="measurement">
-                                            <span class="label">Hip Angle</span>
-                                            <span class="value" id="captured-hip">0°</span>
-                                        </div>
-                                        <div class="measurement">
-                                            <span class="label">Frame Tilt</span>
-                                            <span class="value" id="captured-tilt">0°</span>
-                                        </div>
-                                    </div>
-                                    <div class="capture-actions">
-                                        <button id="save-capture" class="floating-button primary">
-                                            <i class="fas fa-save"></i>
-                                            Save Measurement
-                                        </button>
-                                        <button id="retry-capture" class="floating-button">
-                                            <i class="fas fa-redo"></i>
-                                            Try Again
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ant-col ant-col-8">
-                <div class="ant-card">
-                    <div class="ant-card-head">
-                        <div class="ant-card-head-title">
-                            <i class="fas fa-chart-line"></i>
-                            Real-time Measurements
-                        </div>
-                    </div>
-                    <div class="ant-card-body">
-                        <div id="measurements">
-                            <!-- Shoulder Measurement -->
-                            <div class="stat-card" id="shoulder-gauge-container" data-tooltip="Ideal range: ±5°">
-                                <div class="stat-title">
-                                    <i class="fas fa-arrows-up-down"></i>
-                                    Shoulder Angle
-                                </div>
-                                <div class="ant-progress">
-                                    <div class="ant-progress-outer">
-                                        <div class="ant-progress-inner">
-                                            <div id="shoulder-gauge" class="ant-progress-bg"></div>
-                                        </div>
-                                    </div>
-                                    <span id="shoulder-gauge-angle" class="ant-progress-text">0°</span>
-                                </div>
-                            </div>
-
-                            <!-- Hip Measurement -->
-                            <div class="stat-card" id="hip-gauge-container" data-tooltip="Ideal range: ±5°">
-                                <div class="stat-title">
-                                    <i class="fas fa-balance-scale"></i>
-                                    Hip Angle
-                                </div>
-                                <div class="ant-progress">
-                                    <div class="ant-progress-outer">
-                                        <div class="ant-progress-inner">
-                                            <div id="hip-gauge" class="ant-progress-bg"></div>
-                                        </div>
-                                    </div>
-                                    <span id="hip-gauge-angle" class="ant-progress-text">0°</span>
-                                </div>
-                            </div>
-
-                            <!-- Tilt Measurement -->
-                            <div class="stat-card" id="tilt-gauge-container" data-tooltip="Ideal range: ±2°">
-                                <div class="stat-title">
-                                    <i class="fas fa-compass"></i>
-                                    Frame Tilt
-                                </div>
-                                <div class="ant-progress">
-                                    <div class="ant-progress-outer">
-                                        <div class="ant-progress-inner">
-                                            <div id="tilt-gauge" class="ant-progress-bg"></div>
-                                        </div>
-                                    </div>
-                                    <span id="tilt-gauge-angle" class="ant-progress-text">0°</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-
-<!-- Settings Modal -->
-<div id="settings-modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Scoliosis Analysis Settings</h2>
-            <span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <form id="threshold-form">
-                <div class="form-group">
-                    <label for="shoulder-threshold">Shoulder Angle Threshold (degrees)</label>
-                    <input type="number" id="shoulder-threshold" name="shoulder_threshold" min="1" max="45" step="0.5" value="5">
-                </div>
-                <div class="form-group">
-                    <label for="hip-threshold">Hip Angle Threshold (degrees)</label>
-                    <input type="number" id="hip-threshold" name="hip_threshold" min="1" max="45" step="0.5" value="5">
-                </div>
-                <div class="form-group">
-                    <label for="tilt-threshold">Frame Tilt Threshold (degrees)</label>
-                    <input type="number" id="tilt-threshold" name="tilt_threshold" min="0.5" max="10" step="0.5" value="2">
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="save-button">Save Changes</button>
-                </div>
-            </form>
-        </div>
+    </div>
+    <div class="countdown-overlay" style="display: none;">
+        <span class="countdown-text">5</span>
     </div>
 </div>
+
 {% endblock %}
 
 {% block scripts %}
-<script src="https://kit.fontawesome.com/3b0b144efc.js" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='js/posture.js') }}"></script>
 {% endblock %}
