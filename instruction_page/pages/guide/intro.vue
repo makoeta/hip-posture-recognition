@@ -5,8 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="px-8 text-2xl">
-    <div class="cursor typewriter-animation text-4xl">Hallo!</div>
+  <div class="px-8 text-xl  2xl:text-2xl">
+    <div class="cursor typewriter-animation text-2xl 2xl:text-4xl">Hallo!</div>
     <br>
     <div>
       Dieses Open-Source-Projekt hilft dabei, die Körperhaltung von Patientinnen
@@ -24,15 +24,14 @@ definePageMeta({
       unterstreicht. Ein Klick darauf führt Sie direkt zur jeweiligen Webseite
       oder Ressource.
     </div>
-    <div>
+    <span>
       Zum Beispiel
       <NuxtLink to="/guide/intro">
         <div class="tooltip" data-tip="Klickbarer Link">
           <span class="font-bold hover:underline">hier</span>
         </div>
-      </NuxtLink>
-      .
-    </div>
+      </NuxtLink>.
+    </span>
   </div>
 </template>
 
