@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@formkit/auto-animate",
     "@nuxtjs/i18n",
     "@nuxt/icon",
+    "@nuxt/content",
   ],
   css: ["~/assets/css/main.css"],
   vite: {
@@ -17,6 +18,11 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "HPR Setup Guide",
+    },
+  },
+  content: {
+    preview: {
+      api: "https://api.nuxt.studio",
     },
   },
 });

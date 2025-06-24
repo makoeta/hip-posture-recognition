@@ -1,0 +1,5 @@
+- entries:
+    - question: Wie kann ich das System ausschalten?
+      answer: Der Raspberry Pi kann gefahrlos vom Strom getrennt werden, um ihn auszuschalten. Alternativ kann auch der kleine Knopf auf der Rückseite zum Aus- und Einschalten verwendet werden.
+    - question: Wie starte ich das System?
+      answer: Um das System zu starten, müssen Sie lediglich die Kabel einstecken. Der Raspberry Pi startet alle Prozesse automatisch. Stellen Sie lediglich sicher, dass alle Kabel (für Bildschirm, Webcam und Strom) angeschlossen sind.
