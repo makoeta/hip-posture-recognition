@@ -1,5 +1,18 @@
 import { defineCollection, defineContentConfig, z } from "@nuxt/content";
 
+const checkListItem = z.object({
+  checklist: z.object({
+    label: z.string(),
+    description: z.string(),
+    successMessage: z.string(),
+    items: z.array(
+      z.object({
+        label: z.string(),
+        text: z.string(),
+      }),
+    ),
+  }),
+});
 export default defineContentConfig({
   collections: {
     faq: defineCollection({
@@ -13,6 +26,11 @@ export default defineContentConfig({
           }),
         ),
       }),
+    }),
+    test: defineCollection({
+      type: "page",
+      source: "**/*.yml",
+      schema: checkListItem,
     }),
   },
 });

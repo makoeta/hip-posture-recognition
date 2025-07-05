@@ -1,0 +1,8 @@
+label: "Test checklist"
+successMessage: "Done!"
+description: "Description"
+items:
+  - label: "Test item 1"
+    text: "Text here."
+  - label: "Test item 2"
+    text: "Text here."
