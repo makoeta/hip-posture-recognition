@@ -18,7 +18,7 @@
         v-if="checkedItems.length == item.body.items.length"
         class="mt-4 text-2xl"
       >
-        {{ item.body.successMessage }}
+        {{ item.body.successMessage || "" }}
         <span class="text-xl">(Klicken Sie auf weiter)</span>
       </div>
     </div>
@@ -33,17 +33,11 @@ definePageMeta({
 });
 
 const route = useRoute();
-const slug = Array.isArray(route.params.slug)
-  ? route.params.slug.join("/")
-  : route.params.slug;
+const checkedItems = ref<number[]>([]);
 
 const { data: item } = await useAsyncData("test", () => {
-  return queryCollection("test")
-    .path("/test/" + slug)
-    .first();
+  return queryCollection("test").path(route.path).first();
 });
-
-let checkedItems = ref<number[]>([]);
 
 const toggleCheckBox = (index: number) => {
   if (checkedItems.value.includes(index)) {
