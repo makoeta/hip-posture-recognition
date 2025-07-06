@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxt/eslint": "^1.4.1",
     "@nuxt/ui": "^3.1.2",
+    "@nuxtjs/mdc": "^0.17.0",
     "@tailwindcss/vite": "^4.1.7",
     "better-sqlite3": "^11.10.0",
     "eslint": "^9.27.0",

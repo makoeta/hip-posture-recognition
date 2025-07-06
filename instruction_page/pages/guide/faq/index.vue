@@ -11,6 +11,7 @@ const { data: faq } = await useAsyncData("faq", () => {
 </script>
 
 <template>
+  <div>
   <div class="text-xl font-bold">
     Hier gibt’s Antworten auf die Fragen, die am häufigsten auftauchen. Schnell
     gelesen, schnell verstanden!
@@ -38,5 +39,7 @@ const { data: faq } = await useAsyncData("faq", () => {
         Zurück zur Übersicht
       </div>
     </div>
+  </div>
+
   </div>
 </template>

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-defineProps<{
-  title: string;
-}>();
+import {
+  useCheckedCheckListItemCounter,
+  useCheckListItemCounter,
+} from "~/composables/useChecklist";
 
 const isChecked = ref(false);
 
@@ -9,8 +10,30 @@ const emits = defineEmits<{
   (e: "box-check", value: boolean): void;
 }>();
 
+onMounted(() => {
+  const counter = useCheckListItemCounter();
+
+  counter.value = counter.value + 1;
+});
+
+onUnmounted(() => {
+  const counter = useCheckListItemCounter();
+  const checkedCounter = useCheckedCheckListItemCounter();
+  checkedCounter.value = 0;
+  counter.value = 0;
+});
+
 watch(isChecked, (checked) => {
   emits("box-check", checked);
+  const checkedCounter = useCheckedCheckListItemCounter();
+
+  if (checked) {
+    checkedCounter.value = checkedCounter.value + 1;
+  } else {
+    checkedCounter.value = checkedCounter.value - 1;
+  }
+
+  console.log("checkedCounter: " + checkedCounter.value);
 });
 </script>
 
@@ -20,8 +43,12 @@ watch(isChecked, (checked) => {
       <input v-model="isChecked" class="checkbox checkbox-lg" type="checkbox" />
     </div>
     <div class="list-col-grow">
-      <div class="text-3xl">{{ title }}</div>
-      <slot />
+      <div class="text-3xl">
+        <slot name="label" />
+      </div>
+      <div class="text-xl">
+        <slot name="description" />
+      </div>
     </div>
   </li>
 </template>
