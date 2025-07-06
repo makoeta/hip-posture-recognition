@@ -3,3 +3,9 @@
 @plugin "daisyui" {
   themes: light --default, dark;
 }
+
+a {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}

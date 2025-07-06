@@ -7,9 +7,9 @@ defineProps<{
 <template>
   <ul class="list">
     <li class="p-4 pb-2 text-3xl font-bold tracking-wide">
-      {{ label }}
+      <slot name="label" />
     </li>
-    <slot />
+    <slot name="items" />
   </ul>
 </template>
 

@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxt/icon",
     "@nuxt/content",
+    "@nuxtjs/mdc",
   ],
   css: ["~/assets/css/main.css"],
   vite: {
@@ -24,5 +25,6 @@ export default defineNuxtConfig({
     preview: {
       api: "https://api.nuxt.studio",
     },
+    experimental: {},
   },
 });

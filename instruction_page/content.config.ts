@@ -1,9 +1,8 @@
 import { defineCollection, defineContentConfig, z } from "@nuxt/content";
 
-const checkListItem = z.object({
+export const checkListItem = z.object({
   checklist: z.object({
     label: z.string(),
-    description: z.string(),
     successMessage: z.string(),
     items: z.array(
       z.object({
@@ -27,10 +26,9 @@ export default defineContentConfig({
         ),
       }),
     }),
-    test: defineCollection({
+    guide: defineCollection({
       type: "page",
-      source: "**/*.yml",
-      schema: checkListItem,
+      source: "guide/**/*.md",
     }),
   },
 });
