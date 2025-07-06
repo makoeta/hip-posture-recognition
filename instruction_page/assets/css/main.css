@@ -3,3 +3,12 @@
 @plugin "daisyui" {
   themes: light --default, dark;
 }
+
+a {
+  font-weight: bold;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
