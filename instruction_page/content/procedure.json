@@ -1,0 +1,76 @@
+[
+  {
+    "label": "Einführung",
+    "url": "/guide/intro",
+    "subItems": [
+      {
+        "label": "Einführung",
+        "url": "/guide/intro"
+      }
+    ]
+  },
+  {
+    "label": "Hardware",
+    "url": "/guide/hardware",
+    "subItems": [
+      {
+        "label": "Materialien",
+        "url": "/guide/hardware/materials"
+      },
+      {
+        "label": "Montage: Lüfter",
+        "url": "/guide/hardware/fan"
+      },
+      {
+        "label": "Montage: Gehäuse",
+        "url": "/guide/hardware/case"
+      }
+    ]
+  },
+  {
+    "label": "Software",
+    "url": "/guide/software",
+    "subItems": [
+      {
+        "label": "Imager installieren",
+        "url": "/guide/software/imager"
+      },
+      {
+        "label": "MicroSD Karte",
+        "url": "/guide/software/sdcard"
+      },
+      {
+        "label": "Image herunterladen",
+        "url": "/guide/software/image"
+      },
+      {
+        "label": "Image installieren",
+        "url": "/guide/software/install"
+      }
+    ]
+  },
+  {
+    "label": "Installation",
+    "url": "/guide/installation",
+    "subItems": [
+      {
+        "label": "Verkabelung",
+        "url": "/guide/install/setup"
+      },
+      {
+        "label": "Benutzen",
+        "url": "/guide/install/use"
+      }
+    ]
+  },
+  {
+    "label": "FAQ",
+    "url": "/guide/faq",
+    "subItems": [
+      {
+        "label": "FAQ",
+        "url": "/guide/faq"
+      }
+    ]
+  }
+]
