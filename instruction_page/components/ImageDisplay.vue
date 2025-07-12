@@ -6,6 +6,7 @@ const getClearImUrl = (imgUrl: string) => {
   if (url.startsWith("/")) {
     url = url.substring(1, url.length);
   }
+  url = url.replaceAll("//", "/")
   return url;
 };
 </script>
@@ -14,39 +15,39 @@ const getClearImUrl = (imgUrl: string) => {
   <div class="w-full px-[3%]">
     <div class="carousel w-full">
       <div
-        v-for="(imgUrl, index) in props.imageUrls"
-        :id="'slide' + index"
-        :key="imgUrl"
-        class="carousel-item relative w-full"
+          v-for="(imgUrl, index) in props.imageUrls"
+          :id="'slide' + index"
+          :key="imgUrl"
+          class="carousel-item relative w-full"
       >
         <img
-          :alt="getClearImUrl(imgUrl)"
-          :src="getClearImUrl(imgUrl)"
-          class="w-full"
-        />
+            :alt="getClearImUrl(imgUrl)"
+            :src="getClearImUrl(imgUrl)"
+            class="w-full"
+        >
 
         <div
-          class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 justify-between"
+            class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 justify-between"
         />
         <div
-          v-if="imageUrls.length > 1"
-          class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 justify-between"
+            v-if="imageUrls.length > 1"
+            class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 justify-between"
         >
           <a
-            :href="
+              :href="
               '#slide' +
               (index - 1 >= 0 ? index - 1 : props.imageUrls.length - 1)
             "
-            class="btn btn-circle"
+              class="btn btn-circle"
           >
             ❮
           </a>
 
           <a
-            :href="
+              :href="
               '#slide' + (index + 1 < props.imageUrls.length ? index + 1 : 0)
             "
-            class="btn btn-circle"
+              class="btn btn-circle"
           >
             ❯
           </a>
