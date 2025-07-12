@@ -35,6 +35,7 @@ jobs:
         working-directory: instruction_site
         id: detect-package-manager
         run: |
+          echo ls -la+
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
