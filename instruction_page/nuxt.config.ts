@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
-  devtools: { enabled: true },
+  devtools: {enabled: true},
   modules: [
     "@nuxt/eslint",
     "@formkit/auto-animate",
@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   app: {
+    baseURL: process.env.NODE_ENV === 'production' ? '/hip-posture-recognition/' : '/',
     head: {
       title: "HPR Setup Guide",
     },
