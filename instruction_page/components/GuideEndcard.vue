@@ -7,7 +7,11 @@
     </div>
 
     <div class="mt-12">
-      <NuxtLink external target="_blank" to="https://www.github.com">
+      <NuxtLink
+        external
+        target="_blank"
+        to="https://github.com/makoeta/hip-posture-recognition"
+      >
         <button class="btn btn-xl">
           <slot name="btnLabel" />
         </button>
