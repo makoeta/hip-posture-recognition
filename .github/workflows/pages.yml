@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
-        working-directory: ./instruction_site
+        working-directory: instruction_site
         id: detect-package-manager
         run: |
           cd instruction_page
@@ -73,7 +73,7 @@ jobs:
             cd instruction_page
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
-        working-directory: ./instruction_site
+        working-directory: instruction_site
         run: |
           ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
