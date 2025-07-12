@@ -4,9 +4,7 @@ import GuidePaginator from "~/components/GuidePaginator.vue";
 </script>
 
 <template>
-  <div
-    class="flex h-screen flex-col items-center justify-between overflow-hidden font-mono"
-  >
+  <div class="flex h-screen flex-col items-center justify-between font-mono">
     <div class="flex w-full flex-col lg:w-[50%]">
       <div class="flex justify-center">
         <guide-header />

@@ -47,3 +47,7 @@ Wunderbar! Sie haben das Gehäuse angebracht, Sie können nun fortfahren.
 ::
 
 ::
+
+::imageDisplay{:imageUrls='["/images/pi_cables.png"]'}
+
+::

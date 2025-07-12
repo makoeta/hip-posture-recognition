@@ -10,7 +10,9 @@ MicroSD Karte mit PC verbinden
 microSD in Adapter
 
 #description
-Stecken Sie die MicroSD-Karte in den Adapter. (Siehe Abb. 1)
+Stecken Sie die MicroSD-Karte in den Adapter. (Siehe Abbildung)
+
+(Der Adapter befindet sich ebenfalls im Raspberry Pi Kit.)
 
 ::
 
@@ -20,7 +22,7 @@ Stecken Sie die MicroSD-Karte in den Adapter. (Siehe Abb. 1)
 Adapter in PC
 
 #description
-Stecken Sie den Adapter mit MicroSD-Karte in Ihren PC. (Siehe Abb. 2)
+Stecken Sie den Adapter mit MicroSD-Karte in Ihren PC.
 
 ::
 
@@ -28,5 +30,9 @@ Stecken Sie den Adapter mit MicroSD-Karte in Ihren PC. (Siehe Abb. 2)
 
 Die microSD-Karte befindet sich in ihrem PC. Sie können fortfahren.
 ::
+
+::
+
+::imageDisplay{:imageUrls='["/images/microSD_adapter.jpg"]'}
 
 ::

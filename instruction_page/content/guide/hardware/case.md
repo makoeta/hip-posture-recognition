@@ -4,6 +4,18 @@
 Gehäuse montieren
 
 #items
+
+::guideChecklistItem
+
+#label
+Info
+
+#description
+Das HPR-System ist auch ohne Gehäuse voll funktionsfähig. Dieser Schritt ist daher nicht zwingend. Jedoch wird dazu
+geraten, ein Gehäuse zu verwenden, da dieses den Raspberry Pi vor Einwirkungen schützt.
+
+::
+
 ::guideChecklistItem
 
 #label
@@ -22,7 +34,13 @@ Gehäuse anbringen
 #description
 Bauen Sie das Gehäuse um den RaspberryPi.
 
-Die offizielle Anleitung dafür finden Sie [hier](https://datasheets.raspberrypi.com/case/case-for-raspberry-pi-5-product-brief.pdf){:target='_blank'}.
+Um das Gehäuse am Raspberry Pi anzubringen, befestigen Sie zunächst die Unterseite des Gehäuses mit den dazugehörigen
+Schrauben. Anschließend bringen Sie die Abdeckungen für die Anschlüsse an. Zuletzt bringen Sie den oberen Teil des
+Gehäuses an.
+
+Eine Abbildung des fertigen Aufbaus finden
+Sie: [hier](https://www.berrybase.de/raspberry-pi-5-8gb-active-cooler-starter-kit-mit-aluminium-gehaeuse){:target='_
+blank'}.
 
 ::
 
