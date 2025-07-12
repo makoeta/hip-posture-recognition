@@ -1,5 +1,13 @@
 <script lang="ts" setup>
 const props = defineProps<{ imageUrls: string[] }>();
+
+const getClearImUrl = (imgUrl: string) => {
+  let url = useRuntimeConfig().app.baseURL + imgUrl;
+  if (url.startsWith("/")) {
+    url = url.substring(1, url.length);
+  }
+  return url;
+};
 </script>
 
 <template>
@@ -11,7 +19,11 @@ const props = defineProps<{ imageUrls: string[] }>();
         :key="imgUrl"
         class="carousel-item relative w-full"
       >
-        <img :alt="'Image ' + index + imgUrl" :src="imgUrl" class="w-full" />
+        <img
+          :alt="getClearImUrl(imgUrl)"
+          :src="getClearImUrl(imgUrl)"
+          class="w-full"
+        />
 
         <div
           class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 justify-between"

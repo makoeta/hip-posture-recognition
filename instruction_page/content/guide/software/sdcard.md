@@ -33,6 +33,6 @@ Die microSD-Karte befindet sich in ihrem PC. Sie können fortfahren.
 
 ::
 
-::imageDisplay{:imageUrls='["/images/microSD_adapter.jpg"]'}
+::imageDisplay{:imageUrls='["/images/microSD_adapter.webp"]'}
 
 ::
