@@ -41,6 +41,6 @@ Zuletzt klicken Sie wieder auf "Ja" um den Prozess zu starten.
 Die microSD-Karte befindet sich in ihrem PC. Sie können fortfahren.
 ::
 
-::imageDisplay{:imageUrls='["images/imager_setup.webp"]'}
+::imageDisplay{:imageUrls='["/images/imager_setup.webp"]'}
 
 ::
