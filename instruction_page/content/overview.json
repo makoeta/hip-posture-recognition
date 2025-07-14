@@ -54,6 +54,10 @@
     "url": "/guide/installation",
     "subItems": [
       {
+        "label": "SD-Karte",
+        "url": "/guide/install/sdcard"
+      },
+      {
         "label": "Verkabelung",
         "url": "/guide/install/setup"
       },

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import procedure from "~/content/procedure.json";
+import procedure from "~/content/overview.json";
 
 definePageMeta({
   layout: "guide-overview",

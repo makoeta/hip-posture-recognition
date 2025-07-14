@@ -36,6 +36,19 @@ Zuletzt klicken Sie wieder auf "Ja" um den Prozess zu starten.
 
 ::
 
+::guideChecklistItem
+
+#label
+Warten
+
+#description
+Warten Sie, bis der Prozess abgeschlossen ist. Das Programm informiert Sie, sobald dies geschehen ist.
+
+Sie erhalten eine Nachricht, dass Sie die SD-Karte vom PC entfernen können. Tun Sie dies und fahren Sie **anschließend**
+fort.
+
+::
+
 ::guideChecklistDialog
 
 Die microSD-Karte befindet sich in ihrem PC. Sie können fortfahren.
