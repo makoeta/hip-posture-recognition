@@ -4,14 +4,16 @@ import GuidePaginator from "~/components/GuidePaginator.vue";
 </script>
 
 <template>
-  <div>
-    <div class="flex h-screen flex-col items-center justify-between font-mono">
-      <div class="flex w-full flex-col lg:w-[50%]">
+  <div class="">
+    <div
+      class="top-0 flex min-h-screen flex-col items-center justify-between font-mono"
+    >
+      <div class="flex w-full flex-col sm:w-[auto] sm:max-w-[50%]">
         <div class="flex justify-center">
           <guide-header />
         </div>
 
-        <div class="mt-8 mb-4 grow overflow-y-scroll px-4">
+        <div class="mt-8 mb-4 grow px-4">
           <slot />
         </div>
       </div>
@@ -19,7 +21,9 @@ import GuidePaginator from "~/components/GuidePaginator.vue";
         <GuidePaginator />
       </div>
     </div>
-    <Footer/>
+    <div class="bottom-0">
+      <Footer />
+    </div>
   </div>
 </template>
 

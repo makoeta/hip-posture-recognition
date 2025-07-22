@@ -2,7 +2,7 @@
 
 <template>
   <div class="flex h-screen w-screen flex-col">
-    <div class="mt-10 ml-5 text-6xl font-bold lg:text-8xl">
+    <div class="mt-10 ml-5 text-5xl font-bold lg:text-8xl">
       Hip Posture Recognition
     </div>
     <div class="flex grow items-center justify-center">

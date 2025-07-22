@@ -5,7 +5,7 @@ import GuideHeader from "~/components/GuideHeader.vue";
 <template>
   <div>
     <div class="flex h-screen flex-col items-center font-mono">
-      <div class="flex h-screen w-[50%] flex-col">
+      <div class="flex h-screen flex-col sm:w-[auto] sm:max-w-[50%]">
         <div class="flex justify-center">
           <guide-header />
         </div>

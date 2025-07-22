@@ -7,9 +7,11 @@ const startGuide = () => {
 </script>
 
 <template>
-  <div>
-    <div class="flex h-screen flex-col items-center font-mono">
-      <div class="flex w-[50%] flex-col">
+  <div class="flex flex-col">
+    <div
+      class="flex min-h-screen flex-col items-center overflow-y-scroll font-mono"
+    >
+      <div class="flex w-full flex-col lg:w-[50%]">
         <div class="flex justify-center">
           <guide-header />
         </div>
@@ -27,7 +29,7 @@ const startGuide = () => {
               class="join-item btn btn-ghost text-4xl"
               @click="startGuide()"
             >
-              <div>Zum Starten hier drücken!</div>
+              Zum Starten hier drücken!
             </button>
           </div>
         </div>
