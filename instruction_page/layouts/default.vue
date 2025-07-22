@@ -1,8 +1,11 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
 <template>
-  <div class="h-screen w-screen font-mono">
-    <slot />
+  <div>
+    <div class="h-screen w-screen font-mono">
+      <slot />
+    </div>
+    <Footer />
   </div>
 </template>
 
