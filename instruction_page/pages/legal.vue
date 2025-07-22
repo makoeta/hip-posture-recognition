@@ -2,10 +2,9 @@
 
 <template>
   <div>
-    <div class="h-screen w-screen overflow-scroll font-mono">
-      <slot />
+    <div class="px-[14%]">
+      <Imprint />
     </div>
-    <Footer />
   </div>
 </template>
 

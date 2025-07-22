@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <h1>Impressum</h1><p>Angaben gemäß § 5 DDG</p><p>Hochschule Heilbronn<br>
+    <a>Impressum</a><p>Angaben gemäß § 5 DDG</p><p>Hochschule Heilbronn<br>
     <br>
     Max-Planck-Straße 39<br>
     74081 Heilbronn <br>
