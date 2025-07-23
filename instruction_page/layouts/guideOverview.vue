@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 import GuideHeader from "~/components/GuideHeader.vue";
-
-const startGuide = () => {
-  navigateTo("/guide/intro");
-};
 </script>
 
 <template>
@@ -21,17 +17,14 @@ const startGuide = () => {
         </div>
       </div>
 
-      <div class="flex w-full justify-between font-mono">
+      <div class="mt-4 flex w-full justify-between font-mono">
         <div />
         <div class="join h-fit">
-          <div class="tooltip" data-tip="Anfangen">
-            <button
-              class="join-item btn btn-ghost text-4xl"
-              @click="startGuide()"
-            >
+          <NuxtLink class="tooltip" data-tip="Anfangen" to="/guide/intro">
+            <div class="join-item btn btn-ghost h-fit text-4xl">
               Zum Starten hier drücken!
-            </button>
-          </div>
+            </div>
+          </NuxtLink>
         </div>
         <div />
       </div>
